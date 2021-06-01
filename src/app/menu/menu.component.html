@@ -9,17 +9,17 @@
             <img src="{{foto}}" alt="Foto do usuário" width="50px" height="50px" class="img-fluid rounded-circle">
           </li>
           <li class="nav-item p-2">
-            <p class="m-0 font-weigth-bold text-white fs-16 ">{{nome}}</p>
+            <p class="m-0 font-weigth-bold text-secondary fs-16 ">{{nome}}</p>
           </li>
 
           <li class="nav-item p-2">
               <a href=""> <p class="text-white fs-16 m-0"> 
-                <i class="fa fa-pencil-square-o " aria-hidden="true"></i></p></a>
+                <i class="fa fa-pencil-square-o text-secondary" aria-hidden="true"></i></p></a>
           </li>
         </ul>
         <ul class="navbar-nav mr-auto d-flex align-items-center">
             <li class="nav-item p-3">
-                <a (click)='sair()' class="m-0 font-weigth-bold text-white fs-16 ">Sair <i class="p-2 fa fa-sign-out" aria-hidden="true"></i></a>
+                <button (click)='sair()' type="button" class="btn btn-secondary text-dark">Log Out <i class="p-2 fa fa-sign-out" aria-hidden="true"></i></button>
               </li>
     
         </ul>

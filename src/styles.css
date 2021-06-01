@@ -4,3 +4,17 @@ html
 {
     scroll-behavior: smooth;
 }
+
+.fs-54{
+    font-size: 54pt;
+}
+.fs-18{
+    font-size: 18pt;
+}
+.cor{
+    background-color: #054C46 ;
+    color: #A38D63;
+}
+.cor2{
+    background-color: #E9EAE3;
+}
