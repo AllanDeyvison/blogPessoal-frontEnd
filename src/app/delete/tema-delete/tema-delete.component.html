@@ -1,0 +1,32 @@
+<div class="bg-color">
+    
+    <div class="cotainer">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h1 class="text-center">Delete theme</h1>
+            </div>
+        </div>
+    
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <h4 class="text-center">
+                    Are you sure that you want to delete this theme? All the post that's connected with it'll be equally delete.
+                </h4>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="text-center">Delete Theme {{tema.descricao}} ?</h5>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center pb-3">
+                <button class="btn btn-outline-success btn-sm rounded-pill me-3" routerLink='/tema'>No</button>
+                <button class="btn btn-outline-danger btn-sm rounded-pill" (click)='apagar()'>Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
