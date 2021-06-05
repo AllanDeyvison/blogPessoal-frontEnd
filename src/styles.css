@@ -11,10 +11,40 @@ html
 .fs-18{
     font-size: 18pt;
 }
-.cor{
-    background-color: #054C46 ;
-    color: #A38D63;
+
+h1{
+    color: #f9cc00;
 }
-.cor2{
-    background-color: #E9EAE3;
+h2{
+    color: #f9cc00;
+}
+h4{
+    color: black;
+}
+h5{
+    color:blue;
+}
+.text-cor{
+    color: #f9cc00;
+}
+.text-black{
+    color: black;
+}
+.cor{
+    background-color: black;
+}
+.bg-transparent{
+    background-color: rgba(255, 255, 255, 0.377);
+}
+
+.bg-color{
+    background: rgb(12,0,23);
+    background: linear-gradient(90deg, rgba(12,0,23,1) 0%, rgba(87,7,119,1) 45%, rgba(26,9,130,1) 65%, rgba(8,0,50,1) 100%);
+    }
+.bg-color2{
+    background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,0.9612219887955182) 0%, rgba(87,7,119,0.8603816526610644) 45%, rgba(26,9,130,0.8603816526610644) 65%, rgba(0,0,0,0.9500175070028011) 100%);
+}
+.modal-border{
+    border-color:#f9cc00 ;
 }

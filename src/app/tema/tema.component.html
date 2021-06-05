@@ -1,6 +1,6 @@
-<div class="container-fluid">
-    <div class="row bg-secondary">
-        <div class="col-md-12 text-white tex">
+<div class="container-fluid bg-color">
+    <div class="row">
+        <div class="col-md-12 text-black">
             <a routerLink='/inicio' class="text-white text-left">
                 <i class="fa fa-angle-double-left"></i> First Page
             </a>
@@ -11,47 +11,46 @@
             <div class="row d-flex justify-content-center m-4">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <input [(ngModel)]='tema.descricao' type="text" class="form-control" id="descricao" placeholder="Type the descrition of the theme">
+                        <input [(ngModel)]='tema.descricao' type="text" class="form-control bg-transparent text-white" id="descricao" placeholder="Type the descrition of the theme">
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-light m-3" (click)='cadastrar()'>Create</button>
+                        <button class="btn btn-outline-warning rounded-pill m-3" (click)='cadastrar()'>Create</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="cotainer">
-    <div class="row mt-5">
-        <div class="col-md-12">
-            <h2 class="text-center">All the themes</h2>
+    <div class="cotainer">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h2 class="text-center">All the themes</h2>
+            </div>
+        </div>
+    
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+    
+                <table class="table table-hover table-borderless">
+                    <thead>
+                      <tr class="text-black">
+                        <th scope="col">#</th>
+                        <th scope="col" class="text-black">Descrition</th>
+                        <th scope="col" class="text-end text-black">Changes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let tema of listaTemas' class="text-black">
+                          <td>{{tema.id}}</td>
+                          <td>{{tema.descricao}}</td>
+                          <td class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-primary btn-sm rounded-pill me-3" [routerLink]="['/tema-edit', tema.id]">Edit</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm rounded-pill"    [routerLink]="['/tema-delete', tema.id]">Delete</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+            </div>
         </div>
     </div>
-
-    <div class="row mt-3 mb-5 d-flex justify-content-center">
-        <div class="col-md-6">
-
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Descrition</th>
-                    <th scope="col" class="text-end">Changes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor='let tema of listaTemas'>
-                    <td>{{tema.id}}</td>
-                    <td>{{tema.descricao}}</td>
-                    <td class="d-flex justify-content-end">
-                      <button type="button" class="btn btn-outline-primary btn-sm rounded-pill me-3">Edit</button>
-                      <button type="button" class="btn btn-outline-danger btn-sm rounded-pill">Delete</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-        </div>
-    </div>
 </div>
+

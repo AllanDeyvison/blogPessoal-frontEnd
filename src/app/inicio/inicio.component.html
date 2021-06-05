@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <div class="row bg-secondary d-flex align-items-center">
+<div class="container-fluid bg-color">
+    <div class="row  d-flex align-items-center">
         <div class="col-md-6">
 
             <div class="row d-flex justify-content-center">
@@ -11,8 +11,8 @@
 
             <div class="row d-flex justify-content-center mt-3 mb-5">
                 <div class="col-md-6">
-                    <button class="btn  btn-light me-2" data-bs-toggle="modal" data-bs-target="#newPost">New Post</button>
-                    <a class="btn btn-outline-light" href="#posts">See Posts</a>
+                    <button class="btn  btn-outline-warning rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newPost">New Post</button>
+                    <a class="btn btn-outline-warning rounded-pill" href="#posts">See Posts</a>
                 </div>
             </div>
         </div>
@@ -49,8 +49,8 @@
 
   <!-- Modal -->
   <div class="modal fade" id="newPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog cor3">
-      <div class="modal-content">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-white">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">New Post</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -58,22 +58,22 @@
         <div class="modal-body">
           <div class="form-group">
               <label for="titulo">Title</label>
-              <input type="text" class="form-control" id="titulo" placeholder="Title">
+              <input type="text" class="form-control bg-transparent" id="titulo" placeholder="Title">
           </div>
           <div class="form-group">
             <label for="titulo">Thoughts</label>
-            <textarea class="form-control" name="texto" id="texto" rows="3"></textarea>
+            <textarea class="form-control bg-transparent text-white" name="texto" id="texto" rows="3"></textarea>
         </div>
         <div class="form-group">
             <label for="titulo">Choose a theme or  <a data-bs-dismiss="modal" routerLink='/tema'>create a new theme.</a></label>
-            <select name="tema" id="tema" class="form-control" >
+            <select name="tema" id="tema" class="form-control bg-transparent" >
                 <option value="">Themes</option>
             </select>
         </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success">Post</button>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-outline-success">Post</button>
         </div>
       </div>
     </div>
