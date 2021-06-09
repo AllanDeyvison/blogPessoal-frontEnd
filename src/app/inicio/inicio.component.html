@@ -64,6 +64,9 @@
                   <p class="card-text"><small class="text-muted">
                     {{item.date | date: 'dd/MM/yyyy'}} às {{item.date | date: 'HH:mm'}}
                   </small></p>
+
+                  <a [routerLink]="['/postagem-edit', item.id]" href="" class="text-info me-3">Edit</a>
+                  <a [routerLink]="['/postagem-delete', item.id]" href="" class="text-danger"> Delete</a>
                 </div>
               </div>
             </div> 
@@ -84,6 +87,7 @@
                 <div class="card-footer bg-transparent border-success text-center">
                   <p> <small> by: {{item.usuario.nome}}</small></p>
                 </div>
+
               </div>
             </div> 
         </div>
