@@ -1,0 +1,32 @@
+
+    <div class="container mt-5 mb-5 bg-color">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center ">Atualizar Postagem</h1>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label for="titulo">Title</label>
+                    <input [(ngModel)]='postagem.titulo' type="text" class="form-control text-white bg-transparent" id="titulo" placeholder="Title">
+                </div>
+                <div class="form-groupb mb-3">
+                  <label for="titulo">Thoughts</label>
+                  <textarea [(ngModel)]='postagem.texto' class="form-control bg-transparent text-white" name="texto" id="texto" rows="3"></textarea>
+              </div>
+              <div class="form-group mb-3">
+                <select name="tema" id="tema" class="form-control text-danger bg-transparent"[(ngModel)]='idTema' (change)='findByIdTema'>
+                  <option *ngFor='let item of listaTemas' value="{{item.id}}" class="bg dark">
+                    {{item.descricao}}</option>
+                </select>
+              </div>
+    
+              <div class="d-flex justify-content-center">
+                  <button class="btn btn-outline-danger rounded-pill me-3" routerLink='/inicio'>Cancel</button>
+                  <button class="btn btn-outline-success rounded-pill" (click)='atualizar()'>Update</button>
+              </div>
+    
+            </div>
+        </div>
+    </div>

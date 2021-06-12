@@ -1,0 +1,57 @@
+<div class="cotainer">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 ">
+                    <h1 class="text-center mt-4">Update User </h1>
+
+                    <div class="form-group p-3">
+                        <label for="nome">Name</label>
+                        <input [(ngModel)]='user.nome' class="form-control" type="text" name="nome" id="nome"
+                        placeholder="Name" >
+                    </div>
+                    <div class="form-group p-3">
+                        <label for="usuario">User</label>
+                        <input [(ngModel)]='user.usuario' class="form-control" type="text" name="usuario" id="usuario"
+                        placeholder="User">
+                    </div>
+
+                    <div class="form-group p-3">
+                        <label for="linkFoto">Link from a photo</label>
+                        <input [(ngModel)]='user.foto' class="form-control" type="text" name="linkFoto" id="linkFoto"
+                        placeholder="Link from a photo">
+                    </div>
+
+                    <div class="form-group p-3">
+                        <label for="senha">Password</label>
+                        <input (input)='confirmSenha($event)' class="form-control" type="password" name="senha" id="senha"
+                        placeholder="Password">
+                    </div>
+
+                    <div class="form-group p-3">
+                        <label for="confirmarSenha"> Confirm Password</label>
+                        <input  [(ngModel)]='user.senha' class="form-control" type="password" name="confirmarSenha" id="confirmarSenha"
+                        placeholder="Confirm password">
+                    </div>
+
+                    <div class="form-group p-3">
+                        <label for="tipo"> Kind of User</label>
+                     <select class="form-control" name="tipo" id="tipo" (change)='tipoUser($event)'>
+                       <option>Select kind of user:</option>
+                       <option value="normal">Normal</option>
+                       <option value="adm">Adm</option>
+                     </select>
+
+                     <div class="d-flex justify-content-center p-3">
+                         <button type="submit" class="btn btn-outline-danger me-4" routerLink='/inicio'> Cancel</button>
+                         <button type="submit" class="btn btn-outline-success" (click)='atualizar()'>Update</button>
+                     </div>
+                    
+                    </div>
+
+                    
+                </div>
+        </div>
+    </div>
+</div>
