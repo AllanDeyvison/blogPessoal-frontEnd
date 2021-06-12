@@ -31,11 +31,23 @@
           <button class="nav-link test-secondary font-weight-bold" id="nav-postTheme-tab" data-bs-toggle="tab" data-bs-target="#postTheme" type="button" role="tab" aria-controls="nav-postTheme" aria-selected="false">Posts by Theme</button>
         </div>
       </nav>
+
+    
+
       <div class="tab-content mt-5" id="nav-tabContent">
         <div class=" tab-pane fade show active" id="allPosts" role="tabpanel" aria-labelledby="nav-allPosts-tab">
+          <div class="row d-flex justify-content-center mt-5 mb-5">
+            <div class="col-md-4">
+              <div class="form group">
+                <input type="text" class="form-control rounded-pill" id="titulo" 
+                placeholder="Search for a post" [(ngModel)]='tituloPost' (keyup)='findByTituloPost()'>
+              </div>
+            </div>
+          </div>
           <div class="container">
             <div class="row d-flex justify-content-center">
-              <div class="card border-success mb-3 me-3" *ngFor='let item of listaPostagens' style="max-width: 18rem;">
+              <div class="card border-success mb-3 me-3" 
+              *ngFor='let item of listaPostagens | orderBy : key : reverse' style="max-width: 18rem;">
                 <div class="card-header bg-transparent border-success"></div>
                 <div class="card-body text-success">
                   <h5 class="card-title">{{item.titulo}}</h5>
@@ -54,8 +66,9 @@
       </div>
         <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="nav-myPosts-tab">
           <div class="container">
-            <div class="row">
-              <div class="card border-success mb-3 me-3" *ngFor='let item of user.postagem'style="max-width: 18rem;">
+            <div class="row d-flex justify-content-center">
+              <div class="card border-success mb-3 me-3" 
+              *ngFor='let item of user.postagem  | orderBy : key : reverse'style="max-width: 18rem;">
                 <div class="card-header bg-transparent border-success"></div>
                 <div class="card-body text-success">
                   <h5 class="card-title">{{item.titulo}}</h5>
@@ -74,8 +87,17 @@
         </div>
         <div class="tab-pane fade" id="postTheme" role="tabpanel" aria-labelledby="nav-postTheme-tab">
           <div class="container">
-            <div class="row" *ngFor='let tema of listaTemas'>
-              <div class="card border-success mb-3 me-3" *ngFor='let item of tema.postagem'style="max-width: 18rem;">
+            <div class="row d-flex justify-content-center mt-5 mb-5">
+              <div class="col-md-4">
+                <div class="form group">
+                  <input type="text" class="form-control rounded-pill" id="titulo" 
+                  placeholder="Serach for a theme" [(ngModel)]='tituloPost' (keyup)='findByNomeTema()'>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center" *ngFor='let tema of listaTemas'>
+              <div class="card border-success mb-3 me-3"
+               *ngFor='let item of tema.postagem  | orderBy : key : reverse'style="max-width: 18rem;">
                 <div class="card-header bg-transparent border-success"></div>
                 <div class="card-body text-success">
                   <h5 class="card-title">{{item.titulo}}</h5>
