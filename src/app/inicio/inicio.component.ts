@@ -76,6 +76,12 @@ export class InicioComponent implements OnInit {
     })
   }
 
+  findByIdPostagem(id: number){
+    this.postagemService.getPostagemByID(id).subscribe((resp: Postagem) =>{
+      this.postagem = resp
+    })
+  }
+
 
   publicar(){
     this.tema.id = this.idTema
@@ -86,7 +92,7 @@ export class InicioComponent implements OnInit {
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp 
-      this.alertas.showAlertSuccess('Post created!')
+      alert('Post created!')
       this.postagem = new Postagem()
       this.getAllPostagens()
     })
@@ -104,7 +110,7 @@ export class InicioComponent implements OnInit {
 
   findByNomeTema(){
     if(this.nomeTema == ''){
-      this.getAllTemas
+      this.getAllTemas()
     }else{
       this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) =>{
         this.listaTemas = resp
@@ -113,4 +119,17 @@ export class InicioComponent implements OnInit {
 
   }
 
+  atualizar(){
+    this.tema.id = this.idTema
+    this.postagem.tema = this.tema
+
+    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem)=>{
+      this.postagem = resp
+      alert('Post successfully edit!')
+      this.router.navigate(['inicio'])
+    })
+  }
+
+ 
+ 
 }

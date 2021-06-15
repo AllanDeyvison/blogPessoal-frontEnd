@@ -20,15 +20,49 @@
             <img src="https://i.imgur.com/aiaRDsa.png" alt="" width="500px" height="500px">
         </div>
     </div>
-</div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="newPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">New Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group mb-3">
+            <label for="titulo">Title</label>
+            <input [(ngModel)]='postagem.titulo' type="text" class="form-control text-white bg-transparent" id="titulo" placeholder="Title">
+        </div>
+        <div class="form-groupb mb-3">
+          <label for="titulo">Thoughts</label>
+          <textarea [(ngModel)]='postagem.texto' class="form-control bg-transparent text-white" name="texto" id="texto" rows="3"></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label for="titulo">Choose a theme or  <a data-bs-dismiss="modal" routerLink='/tema' class="semLinha">create a new theme</a> :</label>
+        <select name="tema" id="tema" class="form-control text-danger bg-transparent"[(ngModel)]='idTema' (change)='findByIdTema'>
+          <option *ngFor='let item of listaTemas' value="{{item.id}}" class="bg dark">
+            {{item.descricao}}</option>
+        </select>
+      </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-danger rounded-pill" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-success rounded-pill" (click)='publicar()'
+        data-bs-dismiss="modal">Post</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
  <div class="row">
 
   <div class="container mb-5 mt-5" id="posts">
     <nav>
-        <div class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
-          <button class="nav-link active test-secondary font-weight-bold" id="nav-allPosts-tab" data-bs-toggle="tab" data-bs-target="#allPosts" type="button" role="tab" aria-controls="nav-allPosts" aria-selected="true">All Posts</button>
-          <button (click)='findByIdUser()' class="nav-link test-secondary font-weight-bold" id="nav-myPosts-tab" data-bs-toggle="tab" data-bs-target="#myPosts" type="button" role="tab" aria-controls="nav-myPosts" aria-selected="false">My Posts</button>
-          <button class="nav-link test-secondary font-weight-bold" id="nav-postTheme-tab" data-bs-toggle="tab" data-bs-target="#postTheme" type="button" role="tab" aria-controls="nav-postTheme" aria-selected="false">Posts by Theme</button>
+        <div class="nav nav-pills d-flex justify-content-center" id="myTab" role="tablist">
+          <button class="btn btn-outline-warning rounded-pill active font-weight-bold me-3" id="nav-allPosts-tab" data-bs-toggle="tab" data-bs-target="#allPosts" type="button" role="tab" aria-controls="nav-allPosts" aria-selected="true">All Posts</button>
+          <button (click)='findByIdUser()' class="btn btn-outline-warning rounded-pill font-weight-bold me-3" id="nav-myPosts-tab" data-bs-toggle="tab" data-bs-target="#myPosts" type="button" role="tab" aria-controls="nav-myPosts" aria-selected="false">My Posts</button>
+          <button class="btn btn-outline-warning rounded-pill font-weight-bold" id="nav-postTheme-tab" data-bs-toggle="tab" data-bs-target="#postTheme" type="button" role="tab" aria-controls="nav-postTheme" aria-selected="false">Posts by Theme</button>
         </div>
       </nav>
 
@@ -39,26 +73,26 @@
           <div class="row d-flex justify-content-center mt-5 mb-5">
             <div class="col-md-4">
               <div class="form group">
-                <input type="text" class="form-control rounded-pill" id="titulo" 
+                <input type="text" class="form-control rounded-pill bg-transparent text-white" id="titulo" 
                 placeholder="Search for a post" [(ngModel)]='tituloPost' (keyup)='findByTituloPost()'>
               </div>
             </div>
           </div>
           <div class="container">
             <div class="row d-flex justify-content-center">
-              <div class="card border-success mb-3 me-3" 
+              <div class="card border-warning mb-3 me-3 bg-transparent" 
               *ngFor='let item of listaPostagens | orderBy : key : reverse' style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-success"></div>
-                <div class="card-body text-success">
+                <div class="card-header bg-transparent border-warning"></div>
+                <div class="card-body text-warning">
                   <h5 class="card-title">{{item.titulo}}</h5>
                   <small class="text-muted">Tema: {{item.tema.descricao}}</small>
                   <p class="card-text">{{item.texto}}</p>
-                  <p class="card-text"><small class="text-muted">
+                  <p class="card-text text-center"><small class="text-muted">
                     {{item.date | date: 'dd/MM/yyyy'}} às {{item.date | date: 'HH:mm'}}
                   </small></p>
                 </div>
-                <div class="card-footer bg-transparent border-success text-center">
-                  <p> <small> by: {{item.usuario.nome}}</small></p>
+                <div class="card-footer bg-transparent border-warning text-center">
+                  <p> <small class="text-light"> by: {{item.usuario.nome}}</small></p>
                 </div>
               </div>
             </div> 
@@ -67,19 +101,22 @@
         <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="nav-myPosts-tab">
           <div class="container">
             <div class="row d-flex justify-content-center">
-              <div class="card border-success mb-3 me-3" 
+              <div class="card border-warning mb-3 me-3 bg-transparent" 
               *ngFor='let item of user.postagem  | orderBy : key : reverse'style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-success"></div>
-                <div class="card-body text-success">
+                <div class="card-header bg-transparent border-warning"></div>
+                <div class="card-body text-warning">
                   <h5 class="card-title">{{item.titulo}}</h5>
                   <small class="text-muted">Tema: {{item.tema.descricao}}</small>
                   <p class="card-text">{{item.texto}}</p>
-                  <p class="card-text"><small class="text-muted">
+                  <p class="card-text text-center"><small class="text-muted">
                     {{item.date | date: 'dd/MM/yyyy'}} às {{item.date | date: 'HH:mm'}}
                   </small></p>
 
-                  <a [routerLink]="['/postagem-edit', item.id]" href="" class="text-info me-3">Edit</a>
-                  <a [routerLink]="['/postagem-delete', item.id]" href="" class="text-danger"> Delete</a>
+                  <div class="card-footer bg-transparent border-warning text-center">
+                    <a (click)='findByIdPostagem(item.id)' href="" class="semLinha text-info me-3" data-bs-toggle="modal" data-bs-target="#editPost">Edit</a>
+                    <a [routerLink]="['/postagem-delete', item.id]" href="" class="semLinha text-danger"> Delete</a>
+                  </div>
+                  
                 </div>
               </div>
             </div> 
@@ -90,24 +127,24 @@
             <div class="row d-flex justify-content-center mt-5 mb-5">
               <div class="col-md-4">
                 <div class="form group">
-                  <input type="text" class="form-control rounded-pill" id="titulo" 
-                  placeholder="Serach for a theme" [(ngModel)]='tituloPost' (keyup)='findByNomeTema()'>
+                  <input type="text" class="form-control rounded-pill bg-transparent text-white" id="titulo" 
+                  placeholder="Serach for a theme" [(ngModel)]='nomeTema' (keyup)='findByNomeTema()'>
                 </div>
               </div>
             </div>
             <div class="row d-flex justify-content-center" *ngFor='let tema of listaTemas'>
-              <div class="card border-success mb-3 me-3"
+              <div class="card border-warning mb-3 me-3 bg-transparent"
                *ngFor='let item of tema.postagem  | orderBy : key : reverse'style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-success"></div>
-                <div class="card-body text-success">
+                <div class="card-header bg-transparent border-warning"></div>
+                <div class="card-body text-warning">
                   <h5 class="card-title">{{item.titulo}}</h5>
                   <p class="card-text">{{item.texto}}</p>
-                  <p class="card-text"><small class="text-muted">
+                  <p class="card-text text-center"><small class="text-muted">
                     {{item.date | date: 'dd/MM/yyyy'}} às {{item.date | date: 'HH:mm'}}
                   </small></p>
                 </div>
-                <div class="card-footer bg-transparent border-success text-center">
-                  <p> <small> by: {{item.usuario.nome}}</small></p>
+                <div class="card-footer bg-transparent border-warning text-center">
+                  <p> <small class="text-white"> by: {{item.usuario.nome}}</small></p>
                 </div>
 
               </div>
@@ -116,41 +153,48 @@
 
         </div>
       </div>
-</div>
-
+   </div>
  </div>
 
+ 
 
-  <!-- Modal -->
-  <div class="modal fade" id="newPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content bg-dark text-white">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">New Post</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+ <!--Modal editar post -->
+
+<div class="modal fade" id="editPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{postagem.titulo}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <h1 class="text-center ">Update Post.</h1>
+      </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
           <div class="form-group mb-3">
-              <label for="titulo">Title</label>
+              <label class="text-white" for="titulo">Title</label>
               <input [(ngModel)]='postagem.titulo' type="text" class="form-control text-white bg-transparent" id="titulo" placeholder="Title">
           </div>
           <div class="form-groupb mb-3">
-            <label for="titulo">Thoughts</label>
-            <textarea [(ngModel)]='postagem.texto' class="form-control bg-transparent text-white" name="texto" id="texto" rows="3"></textarea>
+            <label class="text-white" for="titulo">Thoughts</label>
+            <textarea [(ngModel)]='postagem.texto' class="form-control bg-transparent text-white" name="texto" id="texto" rows="4"></textarea>
         </div>
         <div class="form-group mb-3">
-          <label for="titulo">Choose a theme or  <a data-bs-dismiss="modal" routerLink='/tema'>create a new theme</a>:</label>
-          <select name="tema" id="tema" class="form-control text-danger bg-transparent"[(ngModel)]='idTema' (change)='findByIdTema'>
-            <option *ngFor='let item of listaTemas' value="{{item.id}}" class="bg dark">
+          <label class="text-danger" for="titulo">Theme</label>
+          <select name="tema" id="tema" class="form-control bg-transparent text-danger"[(ngModel)]='idTema' (change)='findByIdTema'>
+            <option *ngFor='let item of listaTemas' value="{{item.id}}">
               {{item.descricao}}</option>
           </select>
         </div>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-outline-danger rounded-pill" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-outline-success rounded-pill" (click)='publicar()'
-          data-bs-dismiss="modal">Post</button>
-        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-outline-danger rounded-pill me-3" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-outline-success rounded-pill" (click)='atualizar()'  data-bs-dismiss="modal">Update</button>
       </div>
     </div>
   </div>
+</div>
+
